@@ -12,12 +12,12 @@ import javax.validation.Valid;
 
 @Controller
 public class PhoneController {
-    @GetMapping("/")
+    @GetMapping("/phone")
     public String showForm(Model model){
         model.addAttribute("phonenumber",new PhoneNumber());
         return "index";
     }
-    @PostMapping("/")
+    @PostMapping("/phone")
     public String checkValidation(@Valid @ModelAttribute("phonenumber")PhoneNumber phoneNumber , BindingResult bindingResult,Model model){
         new PhoneNumber().validate(phoneNumber,bindingResult);
         if (bindingResult.hasFieldErrors()){

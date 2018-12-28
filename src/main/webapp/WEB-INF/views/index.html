@@ -5,6 +5,10 @@
     <title>Input PhoneNumber</title>
 </head>
 <body>
+
+<h1 th:text="#{long.create}"></h1>
+<h1 th:text="#{long.update}"></h1>
+Language: <a href="?cc=en">English</a> | <a href="?cc=vi">Vietnamese</a> | <a href="?cc=haw">Hawai</a>
 <form th:action="@{/phone}" method="post" th:object="${pnb}">
     <table>
         <tr>

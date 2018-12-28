@@ -17,8 +17,9 @@ public class LoginController {
         return new User();
     }
 
-    @RequestMapping("/login")
+    @GetMapping("/login")
     public String Index(@CookieValue(value = "setUser",defaultValue = "") String setUser, Model model){
+        // bắt buộc phải trả về 1 cookieValue để liên kết với view. nếu không có thì th:value="${cookieValue.value} sẽ lỗi
         Cookie cookie = new Cookie("setUser",setUser);
         model.addAttribute("cookieValue",cookie);
         return "login";
@@ -33,6 +34,7 @@ public class LoginController {
             }
             //create cookie and set it in respone
             Cookie cookie = new Cookie("setUser",setUser);
+            //setMaxAge để thiết lập thời gian cho cookie, cũng là để xóa cookie khi đặt setMaxAge = 0
             cookie.setMaxAge(24*60*60);
             response.addCookie(cookie);
 
